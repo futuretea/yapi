@@ -1,0 +1,27 @@
+version: '3'
+services:
+  yapi:
+    image: futuretea/yapi:latest
+    # build: ./
+    environment:
+      - VERSION=1.8.1
+    ports:
+      - 127.0.0.1:3000:3000
+    volumes:
+      - ${PWD}/config.json:/app/config.json
+    depends_on:
+      - mongo
+    entrypoint: "bash /wait-for-it.sh mongo:27017 -- sh ./entrypoint.sh"
+    networks:
+      - yapi-net
+  mongo:
+    image: mongo
+    ports:
+      - 127.0.0.1:27017:27017
+    volumes:
+      - ~/data/yapi/mongodb:/data/db
+    networks:
+      - yapi-net
+networks:
+  yapi-net:
+      #external: true
