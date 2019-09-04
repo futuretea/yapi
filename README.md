@@ -1,5 +1,8 @@
 # 部署
 官方文档: https://hellosean1025.github.io/yapi
+```bash
+docker-compose up
+```
 ## 管理员账号密码
 账号: 配置文件config.json中的adminAccount字段
 初始密码:ymfe.org
