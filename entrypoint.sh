@@ -1,9 +1,8 @@
 #! /bin/sh
-if [ ! -e "init.lock" ]
+if [ ! -e "../init.lock" ]
 then
-	ln -s ../config.json
-	yapi install -v ${VERSION}
-	touch init.lock
+	npm run install-server 
+	touch ../init.lock
 fi
 
 if [ $1 ]
