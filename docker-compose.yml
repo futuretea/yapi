@@ -2,11 +2,11 @@ version: '3'
 services:
   yapi:
     image: futuretea/yapi:latest
-    build: ./
+    # build: ./
     ports:
       - 3000:3000
     volumes:
-      - ${PWD}/config.json:/app/yapi/config.json
+      - ./config.json:/app/yapi/config.json
     depends_on:
       - mongo
     entrypoint: "bash ./wait-for-it.sh mongo:27017 -- sh ./entrypoint.sh"
@@ -17,7 +17,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ~/docker/yapi:/data/db
+      - ./data/yapi:/data/db
     networks:
       - yapi-net
 networks:
