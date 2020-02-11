@@ -1,6 +1,7 @@
 version: '3'
 services:
   yapi:
+    restart: unless-stopped
     image: futuretea/yapi:latest
     # build: ./
     ports:
@@ -14,6 +15,7 @@ services:
       - yapi-net
   mongo:
     image: mongo
+    restart: unless-stopped
     ports:
       - 27017:27017
     volumes:
