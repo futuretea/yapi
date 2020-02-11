@@ -8,6 +8,7 @@ services:
       - 3000:3000
     volumes:
       - ./config.json:/app/yapi/config.json
+      - ./data/yapi/initlock:/app/yapi/initlock
     depends_on:
       - mongo
     entrypoint: "bash ./wait-for-it.sh mongo:27017 -- sh ./entrypoint.sh"
@@ -19,7 +20,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ./data/yapi:/data/db
+      - ./data/mongodb:/data/db
     networks:
       - yapi-net
 networks:

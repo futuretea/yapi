@@ -1,8 +1,8 @@
 #! /bin/sh
-if [ ! -e "../init.lock" ]
+if [ ! -e "../initlock/1" ]
 then
-	npm run install-server 
-	touch ../init.lock
+	npm run install-server
+	touch ../initlock/1
 fi
 
 if [ $1 ]
